@@ -5,62 +5,44 @@ class Stock:
         self.hdd_stock = {}
         self.ram_stock = {}
 
-    def ajoutProcesseur(self):
-        CPU = input("quelle marque de processeur voulez vous ajouter > ")
-        if CPU != "":
-            nbCPU = int(input("combien en voulez vous"))
-            a = Processeur(nbCPU, CPU)
-            if CPU in self.processeur_stock:
-                composantsEnStock = self.processeur_stock[CPU]
-                nombre = a.nombre + composantsEnStock
-                self.processeur_stock.update({a.marque: nombre})
-                return self.processeur_stock
-            else:
-                self.processeur_stock[a.marque] = a.nombre
-                return self.processeur_stock
+    def ajoutComposant(self):
+        choix_marque = input("quelle marque voulez vous ajouter > ")
+        if choix_marque != "":
+            nb = int(input("combien en voulez vous"))
 
+            print("\n1 - ajout processeur")
+            print("2 - ajout carte graphique")
+            print("3 - ajout hdd")
+            print("4 - ajout RAM")
+            ajout_composant = input("> ")
 
-    def ajoutCarteGrpahique(self):
-        GPU = input("quelle marque de carte graphique voulez vous ajouter > ")
-        if GPU != "":
-            nbGPU = int(input("combien en voulez vous"))
-            a = CarteGraphique(nbGPU, GPU)
-            if GPU in self.carteGraphique_stock:
-                composantsEnStock = self.carteGraphique_stock[GPU]
-                nombre = a.nombre + composantsEnStock
-                self.carteGraphique_stock.update({a.marque: nombre})
-                return self.carteGraphique_stock
-            else:
-                self.carteGraphique_stock[a.marque] = a.nombre
-                return self.carteGraphique_stock
+            if ajout_composant == "1":
+                composant = Processeur(nb, choix_marque)
+                composantStock = self.processeur_stock
 
-    def ajoutHDD(self):
-        HDD = input("quelle marque de HDD voulez vous ajouter > ")
-        if HDD != "":
-            nbHDD = int(input("combien en voulez vous"))
-            a = HDD(nbHDD, HDD)
-            if HDD in self.hdd_stock:
-                composantsEnStock = self.hdd_stock[HDD]
-                nombre = a.nombre + composantsEnStock
-                self.hdd_stock.update({a.marque: nombre})
-                return self.hdd_stock
-            else:
-                self.hdd_stock[a.marque] = a.nombre
-                return self.hdd_stock
+            elif ajout_composant == "2":
+                composant = CarteGraphique(nb, choix_marque)
+                composantStock = self.carteGraphique_stock
 
-    def ajoutRAM(self):
-        RAM = input("quelle marque de RAM voulez vous ajouter > ")
-        if RAM != "":
-            nbRAM = int(input("combien en voulez vous"))
-            a = RAM(nbRAM, RRAM)
-            if RAM in self.ram_stock:
-                composantsEnStock = self.ram_stock[RAM]
-                nombre = a.nombre + composantsEnStock
-                self.ram_stock.update({a.marque: nombre})
-                return self.ram_stock
+            elif ajout_composant == "3":
+                composant = HDD(nb, choix_marque)
+                composantStock = self.hdd_stock
+
+            elif ajout_composant == "4":
+                composant = RAM(nb, choix_marque)
+                composantStock = self.ram_stock
+
             else:
-                self.processeur_stock[a.marque] = a.nombre
-                return self.processeur_stock
+                print("Mauvaise entrée")
+
+            if composant.marque in composantStock:
+                composantsEnStock = composantStock[composant.marque]
+                nombre = composant.nombre + composantsEnStock
+                composantStock.update({a.marque: nombre})
+                return composantStock
+            else:
+                composantStock[composant.marque] = composant.nombre
+                return composantStock
 
     def affichierStock(self):
         print("\nprocesseur : ", self.processeur_stock)
@@ -113,26 +95,7 @@ if __name__ == "__main__":
             S.affichierStock()
 
         elif choix == "2":
-            print("\n1 - ajout processeur")
-            print("2 - ajout carte graphique")
-            print("3 - ajout hdd")
-            print("4 - ajout RAM")
-            composant = input("> ")
-
-            if composant == "1":
-                S.ajoutProcesseur()
-
-            elif composant == "2":
-                S.ajoutCarteGrpahique()
-
-            elif composant == "3":
-                S.ajoutHDD()
-
-            elif composant == "4":
-                S.ajoutRAM()
-
-            else:
-                pass
+            S.ajoutComposant()
 
 
         elif choix == "3":
