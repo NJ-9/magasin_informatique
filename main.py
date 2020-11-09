@@ -13,18 +13,20 @@ class Stock:
 
     def ajoutCarteGrpahique(self, nombre, marque):
         a = CarteGraphique(nombre, marque)
-        self.processeur_stock[a.marque] = a.nombre
-        return self.processeur_stock
+        self.carteGraphique_stock[a.marque] = a.nombre
+        return self.carteGraphique_stock
 
     def ajoutHDD(self, nombre, marque):
         a = HDD(nombre, marque)
-        self.processeur_stock[a.marque] = a.nombre
-        return self.processeur_stock
+        self.hdd_stock[a.marque] = a.nombre
+        return self.hdd_stock
 
     def ajoutRAM(self, nombre, marque):
         a = RAM(nombre, marque)
-        self.processeur_stock[a.marque] = a.nombre
-        return self.processeur_stock
+        self.ram_stock[a.marque] = a.nombre
+        return self.ram_stock
+
+
 
 
 
