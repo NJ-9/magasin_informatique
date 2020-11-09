@@ -25,24 +25,42 @@ class Stock:
         if GPU != "":
             nbGPU = int(input("combien en voulez vous"))
             a = CarteGraphique(nbGPU, GPU)
-            self.carteGraphique_stock[a.marque] = a.nombre
-            return self.carteGraphique_stock
+            if GPU in self.carteGraphique_stock:
+                composantsEnStock = self.carteGraphique_stock[GPU]
+                nombre = a.nombre + composantsEnStock
+                self.carteGraphique_stock.update({a.marque: nombre})
+                return self.carteGraphique_stock
+            else:
+                self.carteGraphique_stock[a.marque] = a.nombre
+                return self.carteGraphique_stock
 
     def ajoutHDD(self):
         HDD = input("quelle marque de HDD voulez vous ajouter > ")
         if HDD != "":
             nbHDD = int(input("combien en voulez vous"))
             a = HDD(nbHDD, HDD)
-            self.hdd_stock[a.marque] = a.nombre
-            return self.hdd_stock
+            if HDD in self.hdd_stock:
+                composantsEnStock = self.hdd_stock[HDD]
+                nombre = a.nombre + composantsEnStock
+                self.hdd_stock.update({a.marque: nombre})
+                return self.hdd_stock
+            else:
+                self.hdd_stock[a.marque] = a.nombre
+                return self.hdd_stock
 
     def ajoutRAM(self):
         RAM = input("quelle marque de RAM voulez vous ajouter > ")
         if RAM != "":
             nbRAM = int(input("combien en voulez vous"))
             a = RAM(nbRAM, RRAM)
-            self.ram_stock[a.marque] = a.nombre
-            return self.ram_stock
+            if RAM in self.ram_stock:
+                composantsEnStock = self.ram_stock[RAM]
+                nombre = a.nombre + composantsEnStock
+                self.ram_stock.update({a.marque: nombre})
+                return self.ram_stock
+            else:
+                self.processeur_stock[a.marque] = a.nombre
+                return self.processeur_stock
 
     def affichierStock(self):
         print("\nprocesseur : ", self.processeur_stock)
