@@ -68,6 +68,19 @@ class Stock:
         print("hdd : ", self.hdd_stock)
         print("ram : ", self.ram_stock, '\n')
 
+    def retirerDuStock(self, stock):
+        nom = input("quelle marque voulez vous retirer : ")
+        if nom in stock:
+            nb = stock[nom]
+            nombre = int(input("combien voulez vous en retirer : "))
+            if nombre <= nb:
+                stock_final = nb - nombre
+                stock[nom] = stock_final
+            else:
+                print("Vous n'avez pas assez de stock")
+        else:
+            print("Il n'y a pas de composant de marque ", nom, " ici !")
+
 class Processeur:
     def __init__(self, nombre, marque):
         self.nombre = nombre
@@ -123,7 +136,26 @@ if __name__ == "__main__":
 
 
         elif choix == "3":
-            pass
+            print("\n1 - retirer processeur")
+            print("2 - retirer carte graphique")
+            print("3 - retirer hdd")
+            print("4 - retirer RAM")
+            composant = input("> ")
+
+            if composant == "1":
+                S.retirerDuStock(S.processeur_stock)
+
+            elif composant == "2":
+                S.retirerDuStock(S.carteGraphique_stock)
+
+            elif composant == "3":
+                S.retirerDuStock(S.hdd_stock)
+
+            elif composant == "4":
+                S.retirerDuStock(S.ram_stock)
+
+            else:
+                pass
 
         else:
             break
