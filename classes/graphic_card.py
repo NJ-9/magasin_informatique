@@ -2,6 +2,7 @@
 module for creating a graphic card object
 """
 
+
 class GraphicCard:
 
     """
