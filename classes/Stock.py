@@ -102,5 +102,10 @@ class Stock:
         """
         method doctring
         """
-        stock = [self.processor_stock, self.graphic_card_stock, self.hdd_stock, self.ram_stock]
+        stock = [
+            self.processor_stock,
+            self.graphic_card_stock,
+            self.hdd_stock,
+            self.ram_stock
+                ]
         return stock

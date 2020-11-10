@@ -4,7 +4,6 @@ module docstring
 from classes.stock import Stock
 
 
-
 class MainProgram:
     """
     class docstring
@@ -12,8 +11,6 @@ class MainProgram:
     def __init__(self):
         self.stock = Stock()
         self.main()
-
-
 
     def main(self):
         """
@@ -38,8 +35,6 @@ class MainProgram:
             else:
                 break
 
-
-
     def remove_from_stock(self, component):
         """
         mathod docstring
@@ -52,7 +47,6 @@ class MainProgram:
             self.stock.remove_from_stock(self.stock.hdd_stock)
         elif component == "4":
             self.stock.remove_from_stock(self.stock.ram_stock)
-
 
 
 if __name__ == "__main__":
