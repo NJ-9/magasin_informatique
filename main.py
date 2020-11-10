@@ -1,39 +1,39 @@
 from classes.Stock import Stock
 
-class ProgrammePrincipal:
-    def principal(self):
+class MainProgram:
+    def main(self):
         S = Stock()
         while True:
-            print("\n1 - voir le stock")
-            print("2 - ajouter au stock")
-            print("3 - retirer au stock")
-            choix = input("> ")
+            print("\n1 - see the stock")
+            print("2 - add to stock")
+            print("3 - remove from stock")
+            choice = input("> ")
 
-            if choix == "1":
-                S.affichierStock()
+            if choice == "1":
+                S.showStock()
 
-            elif choix == "2":
-                S.ajoutComposant()
+            elif choice == "2":
+                S.addcomponent()
 
 
-            elif choix == "3":
-                print("\n1 - retirer processeur")
-                print("2 - retirer carte graphique")
-                print("3 - retirer hdd")
-                print("4 - retirer RAM")
-                composant = input("> ")
+            elif choice == "3":
+                print("\n1 - remove processor")
+                print("2 - remove graphic card")
+                print("3 - remove hdd")
+                print("4 - remove RAM")
+                component = input("> ")
 
-                if composant == "1":
-                    S.retirerDuStock(S.processeur_stock)
+                if component == "1":
+                    S.RemoveFromStock(S.processor_stock)
 
-                elif composant == "2":
-                    S.retirerDuStock(S.carteGraphique_stock)
+                elif component == "2":
+                    S.RemoveFromStock(S.graphicCard_stock)
 
-                elif composant == "3":
-                    S.retirerDuStock(S.hdd_stock)
+                elif component == "3":
+                    S.RemoveFromStock(S.hdd_stock)
 
-                elif composant == "4":
-                    S.retirerDuStock(S.ram_stock)
+                elif component == "4":
+                    S.RemoveFromStock(S.ram_stock)
 
                 else:
                     pass
@@ -41,5 +41,5 @@ class ProgrammePrincipal:
             else:
                 break
 
-a = ProgrammePrincipal()
-a.principal()
+a = MainProgram()
+a.main()
