@@ -1,40 +1,33 @@
 pipeline{
-    
     agent any
-    
-    stages{
-        stage('git checkout'){
-            steps{
-                git credentialsId:'59386c48-d0d6-406c-b4d0-999d84c16bf7',url:'https://github.com/MathisD49/magasin_informatique.git'
-            }
-        }
-        
-        stage('Build the application'){
-            steps{
-                bat 'mvn clean install'
-            }
-        }
-        
-        stage('Unit Test Execution'){
-            steps{
-                bat 'mvn test'
-            }
-        }
-        
-        stage('Build the docker image'){
-            steps{
-                powershell "docker build -t mathisd49/pipeline-triangle ."
-            }
-        }
-        
-        stage('Push the docker image'){
-            steps{
-                withCredentials([string(credentialsId:'7cc82c73-9cde-4ab3-8062-f825947808ab',variable:'dockerHubPass')]){
-                    powershell "docker login -u mathisd49 -p $dockerHubPass"
+        stages{
+            stage('git checkout'){
+                steps{
+                    git credentialsId: '3624e941-6bdb-44d0-8f50-c80c5f5d6106', url: 'https://github.com/NJ-9/magasin_informatique'
                 }
-                
-                powershell "docker push mathisd49/pipeline-triangle"
+            }
+            stage('Build the application'){
+                steps{
+                    bat 'mvn clean install'
+                }
+            }
+            stage('Unit Test execution') {
+                steps{
+                    bat 'mvn test'
+                }
+            }
+            stage("Build the docker image"){
+                steps{
+                    powershell "docker build -t euphoria776/pipeline-triangle ."
+                }
+            }
+            stage('Push the docker image'){
+                steps{
+                    withCredentials([string(credentialsId:'75804f92-908e-456d-ad30-f1dc501ea25b', variable:'dockerHubPass')]){
+                    powershell "docker login -u euphoria776 -p $dockerHubPass"
+                    }
+                    powershell "docker push euphoria776/pipeline-triangle"
+                }
             }
         }
-    }
 }
